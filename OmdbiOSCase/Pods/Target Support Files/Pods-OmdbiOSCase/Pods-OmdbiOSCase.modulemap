@@ -1,0 +1,6 @@
+framework module Pods_OmdbiOSCase {
+  umbrella header "Pods-OmdbiOSCase-umbrella.h"
+
+  export *
+  module * { export * }
+}

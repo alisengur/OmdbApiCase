@@ -35,7 +35,7 @@ class SplashViewModel: SplashViewModelProtocol {
     func checkInternetConnection() {
         if Reachability.isConnectedToNetwork() {
             // TODO: fetch text from Firebase Remote Config
-            delegate?.handleViewModelOutput(output: .showText(text: ""))
+            delegate?.handleViewModelOutput(output: .showText(text: "Loodos"))
         } else {
             delegate?.handleViewModelOutput(output: .showAlert)
         }

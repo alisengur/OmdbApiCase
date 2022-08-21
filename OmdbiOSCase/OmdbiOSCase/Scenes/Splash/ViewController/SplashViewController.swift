@@ -28,12 +28,12 @@ class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        viewModel.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.fetchTextFromRemoteConfig()
+        viewModel.checkInternetConnection()
     }
 }
 
