@@ -22,6 +22,8 @@
 		2298E9AA28B2B2420029BE66 /* MovieListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2298E9A928B2B2420029BE66 /* MovieListRouter.swift */; };
 		2298E9AC28B2B2540029BE66 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2298E9AB28B2B2540029BE66 /* MovieListViewModel.swift */; };
 		2298E9AE28B2B2620029BE66 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2298E9AD28B2B2620029BE66 /* MovieListViewController.swift */; };
+		2298E9B028B2C65C0029BE66 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2298E9AF28B2C65C0029BE66 /* GoogleService-Info.plist */; };
+		2298E9B328B2C98A0029BE66 /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2298E9B228B2C98A0029BE66 /* RemoteConfigManager.swift */; };
 		54A4789B3966B18AF05FD4DE /* Pods_OmdbiOSCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9F694067F2E077C60AD791 /* Pods_OmdbiOSCase.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		2298E9A928B2B2420029BE66 /* MovieListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListRouter.swift; sourceTree = "<group>"; };
 		2298E9AB28B2B2540029BE66 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		2298E9AD28B2B2620029BE66 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
+		2298E9AF28B2C65C0029BE66 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2298E9B228B2C98A0029BE66 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
 		2EC4E60ECC5BB84C00DB0B09 /* Pods-OmdbiOSCase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmdbiOSCase.debug.xcconfig"; path = "Target Support Files/Pods-OmdbiOSCase/Pods-OmdbiOSCase.debug.xcconfig"; sourceTree = "<group>"; };
 		9B9F694067F2E077C60AD791 /* Pods_OmdbiOSCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmdbiOSCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F41AF4EF4AD324B903458BFD /* Pods-OmdbiOSCase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmdbiOSCase.release.xcconfig"; path = "Target Support Files/Pods-OmdbiOSCase/Pods-OmdbiOSCase.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 				2298E97A28B2AD440029BE66 /* ViewController.swift */,
 				2298E98128B2AD460029BE66 /* LaunchScreen.storyboard */,
 				2298E98428B2AD460029BE66 /* Info.plist */,
+				2298E9AF28B2C65C0029BE66 /* GoogleService-Info.plist */,
 			);
 			path = OmdbiOSCase;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				2298E99D28B2B1830029BE66 /* Network */,
+				2298E9B128B2C96D0029BE66 /* Firebase */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -237,13 +243,20 @@
 			path = Builder;
 			sourceTree = "<group>";
 		};
+		2298E9B128B2C96D0029BE66 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				2298E9B228B2C98A0029BE66 /* RemoteConfigManager.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		3B30F1903EDAED33DDB3FA01 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				2EC4E60ECC5BB84C00DB0B09 /* Pods-OmdbiOSCase.debug.xcconfig */,
 				F41AF4EF4AD324B903458BFD /* Pods-OmdbiOSCase.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -316,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2298E98328B2AD460029BE66 /* LaunchScreen.storyboard in Resources */,
+				2298E9B028B2C65C0029BE66 /* GoogleService-Info.plist in Resources */,
 				2298E99B28B2B04A0029BE66 /* SplashViewController.xib in Resources */,
 				2298E98028B2AD460029BE66 /* Assets.xcassets in Resources */,
 			);
@@ -375,6 +389,7 @@
 				2298E99328B2AFE80029BE66 /* SplashBuilder.swift in Sources */,
 				2298E9AE28B2B2620029BE66 /* MovieListViewController.swift in Sources */,
 				2298E9AA28B2B2420029BE66 /* MovieListRouter.swift in Sources */,
+				2298E9B328B2C98A0029BE66 /* RemoteConfigManager.swift in Sources */,
 				2298E97B28B2AD440029BE66 /* ViewController.swift in Sources */,
 				2298E99728B2AFFA0029BE66 /* SplashViewModel.swift in Sources */,
 				2298E97728B2AD440029BE66 /* AppDelegate.swift in Sources */,
