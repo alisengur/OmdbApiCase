@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SplashViewModelDelegate: AnyObject {
     func handleViewModelOutput(output: SplashViewModelOutput)
@@ -25,11 +26,13 @@ enum SplashViewModelOutput {
 
 class SplashViewModel: SplashViewModelProtocol {
 
-    var delegate: SplashViewModelDelegate?
-
+    weak var delegate: SplashViewModelDelegate?
+    var navigationController: UINavigationController?
+    
     func fetchTextFromRemoteConfig() -> String? {
         let remoteConfig = RemoteConfigManager()
-        if let keyValue = remoteConfig.fetchStringValue(with: "splash_screen_key") {
+        
+        if let keyValue = remoteConfig.fetchStringValue(with: "splash_key") {
             return keyValue
         } else {
             return nil
@@ -46,5 +49,20 @@ class SplashViewModel: SplashViewModelProtocol {
         } else {
             delegate?.handleViewModelOutput(output: .showAlert)
         }
+    }
+}
+
+//MARK: Route
+extension SplashViewModel {
+    
+    func pushMovieListWithTimer(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        _ = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(pushMovieList), userInfo: nil, repeats: false)
+    }
+
+    @objc private func pushMovieList() {
+        guard let navController = self.navigationController else { return }
+        let splashRouter = SplashRouter(navigationController: navController)
+        splashRouter.routeToMovieList()
     }
 }

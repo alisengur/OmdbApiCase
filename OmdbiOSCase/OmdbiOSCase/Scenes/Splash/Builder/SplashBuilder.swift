@@ -12,6 +12,7 @@ final class SplashBuilder {
     
     static func generate() -> SplashViewController {
         // TODO: Injections
+        let navigationController: UINavigationController
         let viewModel = SplashViewModel()
         return SplashViewController(viewModel: viewModel)
     }

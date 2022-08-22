@@ -8,21 +8,42 @@
 import Foundation
 import FirebaseRemoteConfig
 
-final class RemoteConfigManager {
-    
-    private let settings: RemoteConfigSettings
-    private let remoteConfig: RemoteConfig
+class RemoteConfigManager {
     
     init() {
-        settings = RemoteConfigSettings()
-        settings.minimumFetchInterval = 0
-        
-        remoteConfig = RemoteConfig.remoteConfig()
-        remoteConfig.configSettings = settings
+        setRemoteConfigDefaults()
     }
     
+    func setRemoteConfigDefaults() {
+        let appDefaults: [String: Any?] = [
+          "splash_key": "Text"
+        ]
+        RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
+    }
+    
+    func activateDebugMode() {
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 0
+        RemoteConfig.remoteConfig().configSettings = settings
+    }
+    
+    
     func fetchStringValue(with key: String) -> String? {
-        let value = remoteConfig.configValue(forKey: key).stringValue
+        activateDebugMode()
+        
+        RemoteConfig.remoteConfig().fetch { [weak self] _, error in
+          if let error = error {
+              print(error)
+              //TODO: progress
+            return
+          }
+
+          RemoteConfig.remoteConfig().activate { _, _ in
+            print("Retrieved values from the cloud!")
+          }
+        }
+        
+        let value = RemoteConfig.remoteConfig().configValue(forKey: key).stringValue ?? "undefined"
         return value
     }
 }

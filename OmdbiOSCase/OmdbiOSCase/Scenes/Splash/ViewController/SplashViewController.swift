@@ -37,17 +37,30 @@ class SplashViewController: UIViewController {
     }
 }
 
+//MARK: Alert
+extension SplashViewController {
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Hata",
+                                      message: "İnternet bağlantınızı kontrol edin.",
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
 extension SplashViewController: SplashViewModelDelegate {
     
     func handleViewModelOutput(output: SplashViewModelOutput) {
         switch output {
         case .showText(let text):
-            //TODO: show text
-            print(text)
+            labelTitle.text = text
+            // route to movie list screen
+            guard let navController = self.navigationController else { return }
+            self.viewModel.pushMovieListWithTimer(navigationController: navController)
         case .showAlert:
-            //TODO: show alert
-            print("error")
+            showAlert()
         }
     }
-    
 }

@@ -17,7 +17,8 @@ final class SplashRouter {
     }
     
     func routeToMovieList() {
-        // route to movie list screen
+        let movieListVC = MovieListBuilder.generate()
+        self.navigationController.pushViewController(movieListVC, animated: true)
     }
 
 }

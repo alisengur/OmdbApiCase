@@ -10,9 +10,9 @@ import UIKit
 
 final class MovieListBuilder {
     
-    static func generate() -> SplashViewController {
+    static func generate() -> MovieListViewController {
         // TODO: Injections
-        let viewModel = SplashViewModel()
-        return SplashViewController(viewModel: viewModel)
+        let viewModel = MovieListViewModel()
+        return MovieListViewController(viewModel: viewModel)
     }
 }
