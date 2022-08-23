@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2295E90228B3512400BCB0FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2295E90128B3512400BCB0FC /* GoogleService-Info.plist */; };
-		2295E90428B36E8200BCB0FC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2295E90328B36E8200BCB0FC /* Constants.swift */; };
 		2295E90628B3886500BCB0FC /* MovieListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2295E90528B3886500BCB0FC /* MovieListViewController.xib */; };
+		2295E90828B3B9D200BCB0FC /* OmdbApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2295E90728B3B9D200BCB0FC /* OmdbApiService.swift */; };
+		2295E90A28B3BB8800BCB0FC /* MovieListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2295E90928B3BB8800BCB0FC /* MovieListModel.swift */; };
 		2298E97728B2AD440029BE66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2298E97628B2AD440029BE66 /* AppDelegate.swift */; };
 		2298E97928B2AD440029BE66 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2298E97828B2AD440029BE66 /* SceneDelegate.swift */; };
 		2298E97B28B2AD440029BE66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2298E97A28B2AD440029BE66 /* ViewController.swift */; };
@@ -31,8 +32,9 @@
 
 /* Begin PBXFileReference section */
 		2295E90128B3512400BCB0FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		2295E90328B36E8200BCB0FC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2295E90528B3886500BCB0FC /* MovieListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListViewController.xib; sourceTree = "<group>"; };
+		2295E90728B3B9D200BCB0FC /* OmdbApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmdbApiService.swift; sourceTree = "<group>"; };
+		2295E90928B3BB8800BCB0FC /* MovieListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListModel.swift; sourceTree = "<group>"; };
 		2298E97328B2AD440029BE66 /* OmdbiOSCase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmdbiOSCase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2298E97628B2AD440029BE66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2298E97828B2AD440029BE66 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +108,6 @@
 			children = (
 				2298E97628B2AD440029BE66 /* AppDelegate.swift */,
 				2298E97828B2AD440029BE66 /* SceneDelegate.swift */,
-				2295E90328B36E8200BCB0FC /* Constants.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -186,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				2298E99E28B2B1920029BE66 /* Reachability.swift */,
+				2295E90728B3B9D200BCB0FC /* OmdbApiService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -229,6 +231,7 @@
 		2298E9A428B2B1F10029BE66 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2295E90928B3BB8800BCB0FC /* MovieListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -395,14 +398,15 @@
 				2298E9A828B2B2380029BE66 /* MovieListBuilder.swift in Sources */,
 				2298E99328B2AFE80029BE66 /* SplashBuilder.swift in Sources */,
 				2298E9AE28B2B2620029BE66 /* MovieListViewController.swift in Sources */,
+				2295E90828B3B9D200BCB0FC /* OmdbApiService.swift in Sources */,
 				2298E9AA28B2B2420029BE66 /* MovieListRouter.swift in Sources */,
+				2295E90A28B3BB8800BCB0FC /* MovieListModel.swift in Sources */,
 				2298E9B328B2C98A0029BE66 /* RemoteConfigManager.swift in Sources */,
 				2298E97B28B2AD440029BE66 /* ViewController.swift in Sources */,
 				2298E99728B2AFFA0029BE66 /* SplashViewModel.swift in Sources */,
 				2298E97728B2AD440029BE66 /* AppDelegate.swift in Sources */,
 				2298E9AC28B2B2540029BE66 /* MovieListViewModel.swift in Sources */,
 				2298E99928B2B0040029BE66 /* SplashViewController.swift in Sources */,
-				2295E90428B36E8200BCB0FC /* Constants.swift in Sources */,
 				2298E99F28B2B1920029BE66 /* Reachability.swift in Sources */,
 				2298E97928B2AD440029BE66 /* SceneDelegate.swift in Sources */,
 			);

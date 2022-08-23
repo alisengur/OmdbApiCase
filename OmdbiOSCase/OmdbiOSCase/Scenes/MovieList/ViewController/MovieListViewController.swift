@@ -7,10 +7,12 @@
 
 import Foundation
 import UIKit
+import ProgressHUD
 
 class MovieListViewController: UIViewController {
     
     // MARK: Outlets
+    @IBOutlet private weak var searchBar: UISearchBar!
     
     // MARK: Inject
     private let viewModel: MovieListViewModel
@@ -27,6 +29,8 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeSearchBar()
+        viewModel.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,9 +38,38 @@ class MovieListViewController: UIViewController {
     }
 }
 
+private extension MovieListViewController {
+    
+    func initializeSearchBar() {
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.returnKeyType = .search
+    }
+}
+
 extension MovieListViewController: MovieListViewModelDelegate {
     
     func handleViewModelOutput(output: MovieListViewModelOutput) {
-        //...
+        switch output {
+        case .setLoading(let isLoading):
+            print(isLoading)
+        case .reloadTable(let movieResult):
+            print(movieResult)
+        case .showWarningAlert(let message):
+            ProgressHUD.showError(message, image: nil, interaction: false)
+        }
     }
+}
+
+// MARK: Search Bar Delegate -
+extension MovieListViewController: UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.viewModel.searchMovie(with: searchText)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text?.removeAll()
+    }
+
 }

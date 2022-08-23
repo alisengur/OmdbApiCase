@@ -11,8 +11,8 @@ import UIKit
 final class MovieListBuilder {
     
     static func generate() -> MovieListViewController {
-        // TODO: Injections
-        let viewModel = MovieListViewModel()
+        let service = OmdbApiService()
+        let viewModel = MovieListViewModel(service: service)
         return MovieListViewController(viewModel: viewModel)
     }
 }

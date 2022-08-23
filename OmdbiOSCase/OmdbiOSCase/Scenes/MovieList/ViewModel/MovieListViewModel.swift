@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ProgressHUD
 
 protocol MovieListViewModelDelegate: AnyObject {
     func handleViewModelOutput(output: MovieListViewModelOutput)
@@ -20,16 +21,42 @@ protocol MovieListViewModelProtocol {
 
 enum MovieListViewModelOutput {
     case setLoading(Bool)
-    case reloadTable
+    case reloadTable(movieResult: [MovieModel])
+    case showWarningAlert(message: String)
 }
 
 class MovieListViewModel: MovieListViewModelProtocol {
 
     var delegate: MovieListViewModelDelegate?
-
+    private var service: OmdbApiService
+    private var searchTimer: Timer?
+    
+    init(service: OmdbApiService) {
+        self.service = service
+    }
+    
     func searchMovie(with name: String) {
-        //TODO: search movie from service
-        delegate?.handleViewModelOutput(output: .reloadTable)
+        ProgressHUD.show()
+        // To delay creating search movie request. This prevent unnecessary network calls.
+        if searchTimer != nil {
+            searchTimer?.invalidate()
+            searchTimer = nil
+        }
+        searchTimer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(searchForKeyword(_:)), userInfo: name, repeats: false)
+    }
+    
+    @objc func searchForKeyword(_ timer: Timer) {
+        let searchText = timer.userInfo as! String
+        
+        service.searchMovie(with: searchText) { [weak self] movieResult in
+            if let movieResult = movieResult.search {
+                ProgressHUD.dismiss()
+                self?.delegate?.handleViewModelOutput(output: .reloadTable(movieResult: movieResult))
+            }
+        } onFailure: { error in
+            guard let error = error else { return }
+            self.delegate?.handleViewModelOutput(output: .showWarningAlert(message: error))
+        }
     }
     
     func getPermissionForNotification() {

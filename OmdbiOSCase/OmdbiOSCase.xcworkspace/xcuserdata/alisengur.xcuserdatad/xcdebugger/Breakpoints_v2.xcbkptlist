@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B0272080-F20C-4FEF-A9BC-382DC04F8A7B"
-            shouldBeEnabled = "Yes"
+            uuid = "789B2C68-F95B-41C6-957D-8A4C73F261FA"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OmdbiOSCase/Scenes/Splash/ViewController/SplashViewController.swift"
+            filePath = "OmdbiOSCase/Scenes/MovieList/ViewController/MovieListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "handleViewModelOutput(output:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,15 +23,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F5CC0C56-8DE7-4F71-8044-7DC76AE283CF"
-            shouldBeEnabled = "Yes"
+            uuid = "1AE868B2-9289-4A63-AA6B-4789B3B87856"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OmdbiOSCase/Scenes/Splash/ViewController/SplashViewController.swift"
+            filePath = "OmdbiOSCase/Scenes/MovieList/ViewController/MovieListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "handleViewModelOutput(output:)"
             landmarkType = "7">
          </BreakpointContent>
