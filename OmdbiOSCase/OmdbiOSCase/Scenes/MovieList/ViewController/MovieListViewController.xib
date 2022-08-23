@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieListViewController" customModule="OmdbiOSCase" customModuleProvider="target">
             <connections>
                 <outlet property="searchBar" destination="cbt-XP-c2G" id="NtN-N5-1Lm"/>
+                <outlet property="tableView" destination="FK4-Y0-cdr" id="sg8-ys-Q8m"/>
                 <outlet property="view" destination="iN0-l3-epB" id="c5K-8c-e1e"/>
             </connections>
         </placeholder>
@@ -24,12 +25,20 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="51"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FK4-Y0-cdr">
+                    <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="cbt-XP-c2G" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Bdb-dS-JTP"/>
                 <constraint firstItem="cbt-XP-c2G" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Fuo-YM-He8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="FK4-Y0-cdr" secondAttribute="bottom" id="TIN-oX-I44"/>
+                <constraint firstItem="FK4-Y0-cdr" firstAttribute="top" secondItem="cbt-XP-c2G" secondAttribute="bottom" id="YPN-rQ-sBy"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FK4-Y0-cdr" secondAttribute="trailing" id="cpm-aV-moo"/>
+                <constraint firstItem="FK4-Y0-cdr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hg2-9z-QHf"/>
                 <constraint firstItem="cbt-XP-c2G" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="xRl-XS-7Iu"/>
             </constraints>
             <point key="canvasLocation" x="139" y="84"/>

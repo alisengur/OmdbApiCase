@@ -12,7 +12,10 @@ import ProgressHUD
 class MovieListViewController: UIViewController {
     
     // MARK: Outlets
+    @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
+    
+    private let movieTableView: MovieTableView = MovieTableView()
     
     // MARK: Inject
     private let viewModel: MovieListViewModel
@@ -30,6 +33,7 @@ class MovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeSearchBar()
+        initializeTableView()
         viewModel.delegate = self
     }
     
@@ -38,12 +42,27 @@ class MovieListViewController: UIViewController {
     }
 }
 
+//MARK: Initialize UI Components
 private extension MovieListViewController {
     
     func initializeSearchBar() {
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         searchBar.returnKeyType = .search
+    }
+    
+    func initializeTableView() {
+        tableView.registerCell(MovieCell.self)
+
+        tableView.delegate = movieTableView
+        tableView.dataSource = movieTableView
+        movieTableView.delegate = self
+        tableView.keyboardDismissMode = .onDrag
+    }
+    
+    func updateTableView(movies: [MovieModel]) {
+        self.movieTableView.update(movies: movies)
+        self.tableView.reloadData()
     }
 }
 
@@ -54,8 +73,9 @@ extension MovieListViewController: MovieListViewModelDelegate {
         case .setLoading(let isLoading):
             print(isLoading)
         case .reloadTable(let movieResult):
-            print(movieResult)
+            self.updateTableView(movies: movieResult)
         case .showWarningAlert(let message):
+            self.updateTableView(movies: [])
             ProgressHUD.showError(message, image: nil, interaction: false)
         }
     }
@@ -72,4 +92,16 @@ extension MovieListViewController: UISearchBarDelegate {
         searchBar.text?.removeAll()
     }
 
+}
+
+extension MovieListViewController: MovieTableViewDelegate {
+    
+    func handleViewModelOutput(output: MovieTableViewOutput) {
+        
+        switch output {
+        case .onSelected(let movie):
+            print(movie)
+            // route to movie detail
+        }
+    }
 }

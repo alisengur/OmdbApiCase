@@ -28,20 +28,22 @@ enum MovieListViewModelOutput {
 class MovieListViewModel: MovieListViewModelProtocol {
 
     var delegate: MovieListViewModelDelegate?
-    private var service: OmdbApiService
+    private var service: OmdbApiServiceProtocol
     private var searchTimer: Timer?
     
-    init(service: OmdbApiService) {
+    init(service: OmdbApiServiceProtocol) {
         self.service = service
     }
     
     func searchMovie(with name: String) {
         ProgressHUD.show()
-        // To delay creating search movie request. This prevent unnecessary network calls.
+        
+        // eğer bir search requesti için sonlanmamış bir timer var ise, yeni request atmadan önce bu timer'ı kaldırıyoruz(çakışmaları engellemek için)
         if searchTimer != nil {
             searchTimer?.invalidate()
             searchTimer = nil
         }
+        
         searchTimer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(searchForKeyword(_:)), userInfo: name, repeats: false)
     }
     

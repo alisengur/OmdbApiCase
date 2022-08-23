@@ -11,7 +11,7 @@ import UIKit
 final class MovieListBuilder {
     
     static func generate() -> MovieListViewController {
-        let service = OmdbApiService()
+        let service: OmdbApiServiceProtocol = OmdbApiService()
         let viewModel = MovieListViewModel(service: service)
         return MovieListViewController(viewModel: viewModel)
     }
