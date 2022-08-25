@@ -16,8 +16,10 @@ final class MovieListRouter {
         self.navigationController = navigationController
     }
     
-    func routeToMovieDetail() {
+    func routeToMovieDetail(with movie: MovieModel) {
         // route to movie list screen
+        let movieDetailsVC = MovieDetailsBuilder.generate(with: movie)
+        self.navigationController.pushViewController(movieDetailsVC, animated: true)
     }
 
 }

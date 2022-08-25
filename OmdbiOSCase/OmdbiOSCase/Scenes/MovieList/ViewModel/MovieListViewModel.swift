@@ -20,15 +20,14 @@ protocol MovieListViewModelProtocol {
 }
 
 enum MovieListViewModelOutput {
-    case setLoading(Bool)
     case reloadTable(movieResult: [MovieModel])
     case showWarningAlert(message: String)
 }
 
 class MovieListViewModel: MovieListViewModelProtocol {
 
-    var delegate: MovieListViewModelDelegate?
-    private var service: OmdbApiServiceProtocol
+    weak var delegate: MovieListViewModelDelegate?
+    private let service: OmdbApiServiceProtocol
     private var searchTimer: Timer?
     
     init(service: OmdbApiServiceProtocol) {
@@ -64,5 +63,12 @@ class MovieListViewModel: MovieListViewModelProtocol {
     func getPermissionForNotification() {
         //TODO: get permission from user for notification
     }
+}
+
+extension MovieListViewModel {
     
+    func pushMovieDetail(navigationController: UINavigationController, movie: MovieModel) {
+        let movieListRouter = MovieListRouter(navigationController: navigationController)
+        movieListRouter.routeToMovieDetail(with: movie)
+    }
 }

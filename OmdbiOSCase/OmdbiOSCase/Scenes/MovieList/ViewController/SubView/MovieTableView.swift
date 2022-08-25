@@ -13,7 +13,7 @@ protocol MovieTableViewProtocol {
 }
 
 protocol MovieTableViewDelegate: AnyObject {
-    func handleViewModelOutput(output: MovieTableViewOutput)
+    func handleTableViewOutput(output: MovieTableViewOutput)
 }
 
 enum MovieTableViewOutput {
@@ -41,7 +41,7 @@ extension MovieTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.handleViewModelOutput(output: .onSelected(movie: movies[indexPath.row]))
+        delegate?.handleTableViewOutput(output: .onSelected(movie: movies[indexPath.row]))
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

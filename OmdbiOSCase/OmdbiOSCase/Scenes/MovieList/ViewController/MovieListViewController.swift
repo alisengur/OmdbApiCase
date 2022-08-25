@@ -70,8 +70,6 @@ extension MovieListViewController: MovieListViewModelDelegate {
     
     func handleViewModelOutput(output: MovieListViewModelOutput) {
         switch output {
-        case .setLoading(let isLoading):
-            print(isLoading)
         case .reloadTable(let movieResult):
             self.updateTableView(movies: movieResult)
         case .showWarningAlert(let message):
@@ -96,12 +94,14 @@ extension MovieListViewController: UISearchBarDelegate {
 
 extension MovieListViewController: MovieTableViewDelegate {
     
-    func handleViewModelOutput(output: MovieTableViewOutput) {
+    func handleTableViewOutput(output: MovieTableViewOutput) {
         
         switch output {
         case .onSelected(let movie):
-            print(movie)
             // route to movie detail
+            guard let navigationController = self.navigationController else { return }
+            self.viewModel.pushMovieDetail(navigationController: navigationController,
+                                           movie: movie)
         }
     }
 }

@@ -27,7 +27,6 @@ enum SplashViewModelOutput {
 class SplashViewModel: SplashViewModelProtocol {
 
     weak var delegate: SplashViewModelDelegate?
-    var navigationController: UINavigationController?
     
     func fetchTextFromRemoteConfig() -> String? {
         let remoteConfig = RemoteConfigManager()
@@ -56,12 +55,11 @@ class SplashViewModel: SplashViewModelProtocol {
 extension SplashViewModel {
     
     func pushMovieListWithTimer(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-        _ = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(pushMovieList), userInfo: nil, repeats: false)
+        _ = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(pushMovieList(_:)), userInfo: navigationController, repeats: false)
     }
 
-    @objc private func pushMovieList() {
-        guard let navController = self.navigationController else { return }
+    @objc private func pushMovieList(_ timer: Timer) {
+        guard let navController = timer.userInfo as? UINavigationController else { return }
         let splashRouter = SplashRouter(navigationController: navController)
         splashRouter.routeToMovieList()
     }
